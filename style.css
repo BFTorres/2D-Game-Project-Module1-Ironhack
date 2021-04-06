@@ -44,7 +44,7 @@
           height: 100%;
           margin: 0; 
     background-image: url(game-resources/assets/back3.jpeg);
-    font-family: Planewalker;
+    font-style: Planewalker;
     /*animation: glow 1s ease-in-out infinite alternate;*/
   }
   title {

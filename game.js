@@ -13,7 +13,7 @@ document.addEventListener("keyup", function (even){
 let playerImg = new Image();
 playerImg.src = "game-resources/assets/GUAR 3.png";
 let enemyImg = new Image();
-enemyImg.src = "game-resources/assets/racer.png"
+enemyImg.src = "game-resources/assets/racer-removebg-preview.png"
 //audio
 let splashScreenMusic = new Audio();
 splashScreenMusic.src = "game-resources/audio/The Elder Scrolls 高齢者のスクロール.mp3"
@@ -112,7 +112,7 @@ class Statistics {
   draw() {
     ctx.beginPath();
     ctx.fillStyle = this.colour;
-    ctx.font = this.size +"px Planeswalker, arial";
+    ctx.font = this.size +"px Planewalker, arial";
     ctx.textAlign = this.alignment
     ctx.fillText(this.text, this.x, this.y);
     ctx.closePath();
@@ -123,19 +123,27 @@ function createEnemies(){
   let size = randomRange(70, 150); 
   let type = randomRange(0, 1);
   let enemy = new Enemy(canvas.width + size, canvas.height - size, size, size, '#bf1313');
-}
+ 
+ 
+  if (type == 1) {
+        enemy.y -= player.originalHeight - 10;
+      }
+      enemies.push(enemy);
 //diff size npc
 function randomRange(min, max) { 
   return Math.round(Math.random() * (max - min) + min);
+    }
 }
+//timer
 let initialSpawnTimer = 200;
 let spawnTimer = initialSpawnTimer;
+
 //splash
 function splash(){
   let body = document.querySelector("body")
   splashScreen = document.createElement("div")
   splashScreenMusic.play();
-  splashScreenMusic.volume = 0.10
+  splashScreenMusic.volume = 0.05
   splashScreen.classList.add("splashScr")
   splashScreen.innerHTML = `
     <button class="start-btn">SKOOMA TIME</button> 
