@@ -113,7 +113,7 @@ class Statistics {
   draw() {
     ctx.beginPath();
     ctx.fillStyle = this.colour;
-    ctx.font = this.size +"px Planewalker, arial";
+    ctx.font = this.size +"px";
     ctx.textAlign = this.alignment
     ctx.fillText(this.text, this.x, this.y);
     ctx.closePath();
@@ -131,7 +131,7 @@ function PlaySound(splashScreenMusic) {
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function createEnemies(){ 
-  let size = randomRange(70, 150); 
+  let size = randomRange(70, 200); 
   let type = randomRange(0, 1);
   let enemy = new Enemy(canvas.width + size, canvas.height - size, size, size, '#bf1313');
  
@@ -145,7 +145,7 @@ function randomRange(min, max) {
     }
 }
 //timer
-let initialSpawnTimer = 200;
+let initialSpawnTimer = 150;
 let spawnTimer = initialSpawnTimer;
 //splash
 function splash(){
@@ -185,7 +185,7 @@ function startGame(){
   canvas.width = window.innerWidth; 
   canvas.height = window.innerHeight;
   //basics
-  ctx.font = "20px Planewalker, arial"; 
+  ctx.font = "20px"; 
   gameSpeed = 3; 
   gravity = 1; 
   score = 0; 
@@ -273,7 +273,7 @@ for (let i = 0; i < enemies.length; i ++) {
   console.log("game continues")
 }
   player.animation();
-  gameSpeed += 0.040; 
+  gameSpeed += 0.030; 
   score ++;
   scoreText.text = "Score: " + score;
   scoreText.draw();
