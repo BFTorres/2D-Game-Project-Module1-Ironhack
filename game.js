@@ -22,7 +22,10 @@ gameMusic.src = "game-resources/audio/Argonians Are Property (Dunmer Trap).mp3"
 let endGame = new Audio();
 endGame.src = "game-resources/audio/Oblivion-guard-MEME.mp3"
 
+
+
 //variables
+let muted;
 let score; 
 let scoreText;
 let highscore; 
@@ -44,18 +47,28 @@ class Player {
     this.width = width;
     this.height = height;
     this.dirY = 0; 
-    this.jumpForce = 18; 
+    this.jumpForce = 12; 
     this.grounded = false;
     this.jumpTimer = 0;
   }
+
+  /*jump() {
+    if (this.y < 150) {
+    } else {
+      this.speed = -5;
+    }
+  }*/
+
   animation() {
     //pular
     if (keys["Space"]) { 
       this.jump();
     } else {
-        this.jumpTimer = 0;
+        this.jumpTimer = 2;  // 0 
       }
    this.y += this.dirY;
+
+
     //gravity
     if (this.y + this.height < canvas.height) {
       this.dirY += gravity;
@@ -80,6 +93,11 @@ class Player {
       ctx.drawImage(playerImg, this.x, this.y, this.width, this.height)
     } 
   }  
+
+  //////////////////////////////////////////////
+ 
+/////////////////////////////////////////////////////////////////
+
 // npc
 class Enemy {
   constructor (x, y, width, height, colour) {
@@ -131,12 +149,12 @@ function PlaySound(splashScreenMusic) {
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function createEnemies(){ 
-  let size = randomRange(70, 200); 
+  let size = randomRange(70, 240); 
   let type = randomRange(0, 1);
   let enemy = new Enemy(canvas.width + size, canvas.height - size, size, size, '#bf1313');
  
   if (type == 1) {
-        enemy.y -= player.originalHeight - 10;
+        enemy.y -= player.originalHeight - 70;
       }
       enemies.push(enemy);
 //diff size npc
@@ -186,7 +204,7 @@ function startGame(){
   canvas.height = window.innerHeight;
   //basics
   ctx.font = "20px"; 
-  gameSpeed = 3; 
+  gameSpeed = 2; 
   gravity = 1; 
   score = 0; 
   highscore = 0; 
@@ -233,7 +251,35 @@ function newGame() {
     initialSpawnTimer = 200;
     spawnTimer = 100;
   startGame();
+  //////////////////////////////
+  mute();
+  let muteBtn = document.querySelector("#mute");
+  if (muted) {
+    game.music.pause();
+    muteBtn.innerHTML = `<img src ="./img/soundOff.png" alt="Sound Off"/>`;
+  } else {
+    game.music.play();
+    muteBtn.innerHTML = `<img src ="./img/soundOn.png" alt="Sound On"/>`;
+  };
+  ///////////////////////////////
 }
+
+const mute = () => {
+    let muteBtn = document.querySelector("#mute");
+    muteBtn.addEventListener("click", () => {
+      if (muted) {
+        game.music.play();
+        muteBtn.innerHTML = `<img src ="./img/soundOn.png" alt="Sound On"/>`;
+      } else {
+        game.music.pause();
+        muteBtn.innerHTML = `<img src ="./img/soundOff.png" alt="Sound Off"/>`;
+      }
+      muted = !muted;
+    });
+  };
+/////////////////////////////////////////////////
+
+
 // tira o canvas
 function updateGame() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -265,7 +311,7 @@ for (let i = 0; i < enemies.length; i ++) {
       gameMusic.currentTime = 0  
       enemies = []; 
       spawnTimer = initialSpawnTimer;
-      gameSpeed = 3;
+      gameSpeed = 2;
       isGameOver = true
       gameOver();     
   }
@@ -273,7 +319,7 @@ for (let i = 0; i < enemies.length; i ++) {
   console.log("game continues")
 }
   player.animation();
-  gameSpeed += 0.030; 
+  gameSpeed += 0.010; 
   score ++;
   scoreText.text = "Score: " + score;
   scoreText.draw();
