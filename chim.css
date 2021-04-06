@@ -50,8 +50,6 @@ body{
     font-family: 'Palatino Linotype', 'Times New Roman', serif;
     color: white;
     background-color: black;
-    
-    @extend %center;
   }
 
 .banner {
@@ -61,8 +59,6 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    
-    @extend %center;
   }
 
  
@@ -89,36 +85,138 @@ body{
     font-family: PlanewalkerBold, sans-serif;
   }
 
- 
-/*#title{
-    color: rgb(228, 253, 1);
-    font-size: 40px;
-    font-family: PlanewalkerBold, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: center;
-    height: 500px;
-    margin-bottom: 0px;
-    }*/
 
-#start{
-    /*height: 100px;
-    width: 250pxcen;
-    : url("/images/FACE.png");
-    box-shadow: 4px 4px black;*/
-    }
-
-.buttons{
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 0px;
-}
 
  .canvas{
      display: flex;
      align-items: center;
      justify-content: center;
  }
+
+ /*splash*/
+
+
+.hand {
+  display: block; 
+  margin: 0px auto;
+  padding-top: 100px;
+  width: 500px;
+}
+
+.headline {
+  text-transform: uppercase;
+  padding-top: 30px;
+  font-size: 50px;
+  color: white;
+  text-align: center;
+}
+
+.instruccions {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+}
+
+/*g canvas*/
+
+
+#game {
+  padding: 0;
+  margin: auto;
+  margin-top: 100px;
+  display: block;
+  background-image: url(images/Background\(1\).png);
+}
+
+
+/*score*/
+
+.score {
+  text-align: center;
+  color: white
+}
+
+.scoreText {
+  text-decoration: underline;
+  font-size: 60px;
+  letter-spacing: 5px;
+}
+
+.scoreNum {
+  font-size: 60px;
+  color: #fcad26;
+}
+
+.quote{
+  font-size: 35px;
+}
+
+.author {
+  text-transform: uppercase;
+  font-size: 25px;
+  }
+
+  .authorText {
+    font-size: 25px;
+    }
+
+/*btns*/
+/*start*/
+
+.start-btn {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: block; 
+  position: relative; 
+  background: #7d0404;
+  font-size: 25px;
+  font-weight: 300;
+	color: white;
+  text-transform: uppercase;
+	letter-spacing: 2px;
+  padding: 25px 80px; 
+  margin: 0 auto; 
+	box-shadow: 0 6px #efa424;
+  border-radius: 20px;
+}
+
+.start-btn:hover {
+	box-shadow: 0 4px #efa424;
+	top: 2px;
+}
+
+.start-btn:active {
+	box-shadow: 0 0 #efa424;
+	top: 6px;
+}
+
+/*reset*/
+
+.reset-btn {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  background: #7d0404;
+  font-size: 25px;
+  font-weight: 300;
+	color: white;
+  text-transform: uppercase;
+	letter-spacing: 2px;
+  padding: 25px 80px;
+  margin: 0 auto;
+	box-shadow: 0 6px #efa424;
+  border-radius: 20px;
+}
+
+.reset-btn:hover {
+	box-shadow: 0 4px #efa424;
+	top: 2px;
+}
+
+.reset-btn:active {
+	box-shadow: 0 0 #efa424;
+	top: 6px;
+}
