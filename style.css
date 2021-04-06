@@ -4,8 +4,8 @@
     src: url(game-resources/fonts/Planewalker\ Bold\ Italic.otf);
     font-family: Planewalker;
     src: url(game-resources/fonts/Planewalker.otf);
-    /*font-family: ;
-    src: url();*/
+    font-family: Daedric;
+    src: url(game-resources/fonts/AllisDaedric-VYWz.otf);
   }
   @keyframes float{
     from{
@@ -77,14 +77,14 @@
     text-align: left;
     font-size: 9px;
     margin-top: 200px;
-    font-style: Planewalker;
+    
   }
   .memes {
     color: rgb(255, 255, 255);
     text-align: center;
     font-size: 30px;
     margin-top: 200px;
-    font-style: Planewalker;
+   
   }
   /*canvas*/
   #game {
@@ -116,6 +116,8 @@
   }
   /*BTNS*/
   /* start */
+  
+
   .start-btn {
     animation: glow 1s ease-in-out infinite alternate;
     outline: none;
@@ -133,7 +135,7 @@
     margin: 150px auto; 
       box-shadow: 5px 9px #f38e09;
     border-radius: 20px;
-    font-family: Planewalker;
+    font-family: Daedric;
   }
   .start-btn:hover {
       box-shadow: 0 1px #f38e09;
@@ -142,7 +144,7 @@
   .start-btn:active {
       box-shadow: 0 0 #f38e09;
       top: 30px;
-  }
+  }*/
   /* reset */
   .reset-btn {
     animation: glow 1s ease-in-out infinite alternate;
@@ -158,7 +160,7 @@
     text-transform: uppercase;
       letter-spacing: 2px;
     padding: 25px 80px;
-    margin: 0 auto;
+    margin: 150px auto;
       box-shadow:  5px 9px #f38e09;
     border-radius: 20px;
   }
@@ -171,5 +173,6 @@
       top: 30px;
   }
   
-  
+
+
   

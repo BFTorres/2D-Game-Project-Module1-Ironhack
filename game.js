@@ -21,6 +21,7 @@ let gameMusic = new Audio();
 gameMusic.src = "game-resources/audio/Argonians Are Property (Dunmer Trap).mp3"
 let endGame = new Audio();
 endGame.src = "game-resources/audio/Oblivion-guard-MEME.mp3"
+
 //variables
 let score; 
 let scoreText;
@@ -119,6 +120,16 @@ class Statistics {
   }
 }
 //>>functions<<//
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+function PlaySound(splashScreenMusic) {
+    alert("Skooma Party");
+    return new Audio(path + splashScreenMusic + ".mp3");
+    snd.play();
+}
+
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function createEnemies(){ 
   let size = randomRange(70, 150); 
   let type = randomRange(0, 1);
@@ -141,10 +152,10 @@ function splash(){
   let body = document.querySelector("body")
   splashScreen = document.createElement("div")
   splashScreenMusic.play();
-  splashScreenMusic.volume = 0.05
+  splashScreenMusic.volume = 0.30
   splashScreen.classList.add("splashScr")
   splashScreen.innerHTML = `
-    <button class="start-btn">SKOOMA TIME</button> 
+    <button class="start-btn">GO</button> 
     <h2 class= "memes">"Getting high in High-Rock and hammered in Hammerfell." - M'aiq the Liar</h2>
     <h4 class= "rights">All rights reserved to: Bethesda Games Studio. Music by AllinAll, YoungScrolls.</h4>`
   body.appendChild(splashScreen)
@@ -153,7 +164,7 @@ function splash(){
       splashScreenMusic.pause();
       splashScreen.currentTime = 0
       gameMusic.play()
-      gameMusic.volume = 0.05
+      gameMusic.volume = 0.30
       startGame();
     })
 }
@@ -190,7 +201,7 @@ function startGame(){
 function gameOver(){
   endGame.currentTime = 0
   endGame.play();
-  endGame.volume = 0.05;
+  endGame.volume = 0.30;
   canvasContainer.remove();
   let body = document.querySelector("body") 
   gameOverScreen = document.createElement("div")
