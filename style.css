@@ -1,0 +1,151 @@
+
+@font-face {
+    font-family: PlanewalkerBold;
+    src: url(game-resources/fonts/PlanewalkerBold);
+    font-family: Planewalker;
+    src: url(game-resources/fonts/Planewalker);
+    /*font-family: ;
+    src: url();*/
+  }
+  @keyframes float{
+    from{
+        margin-bottom: 2rem;
+    }
+    to{
+        margin-bottom: 1rem;
+    }
+  }
+  @keyframes glow {
+    from {
+      text-shadow:
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 30px #808080,
+        0 0 40px #808080,
+        0 0 50px #808080,
+        0 0 60px #000,
+        0 0 70px #000;
+    }
+    to {
+        text-shadow:
+          0 0 20px #000,
+          0 0 30px #000,
+          0 0 40px #fff,
+          0 0 50px #fff,
+          0 0 60px #fff,
+          0 0 70px #fff,
+          0 0 80px #fff;
+      }
+    }   
+  /*g h*/
+  body {
+      background: radial-gradient(600px at 50% 50% , rgb(26, 24, 24) 30%, rgb(8, 0, 0) 150%);
+          width: 100%;
+          height: 100%;
+          margin: 0; 
+    background-image: url(game-resources/assets/back3.jpeg);
+    font-family: Planewalker;
+    /*animation: glow 1s ease-in-out infinite alternate;*/
+  }
+  title {
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+  h1{
+    /*animation: glow 1s ease-in-out infinite alternate;*/
+    font-style: Planewalker, arial;
+    color:white;
+    text-align: center;
+    padding: 10px;
+    font-size: 90px;
+    letter-spacing: 5px;
+  }
+  /*splash*/
+  .instruccions {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 30px;
+  }
+  /*canvas*/
+  #game {
+    padding: 0;
+    margin: auto;
+    margin-top: 100px;
+    display: block;
+    background-image: url(game-resources/assets/Background\(1\).png);
+  }
+  /*score*/
+  .score {
+    padding-top: 5%;
+    text-align: center;
+    color: white
+  }
+  .scoreText {
+    font-size: 40px;
+    letter-spacing: 10px;
+  }
+  .scoreNum {
+    font-size: 90px;
+    color: #f4dbf4;
+  }
+  .quote{
+    font-size: 60px;
+  }
+  /*BTNS*/
+  /* start */
+  .start-btn {
+    animation: glow 1s ease-in-out infinite alternate;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: block; 
+    position: relative; 
+    background: #020100;
+    font-size: 30px;
+    font-weight: 300;
+      color: #f38e09;
+    text-transform: uppercase;
+      letter-spacing: 2px;
+    padding: 25px 80px; 
+    margin: 0 auto; 
+      box-shadow: 3px 6px #f38e09;
+    border-radius: 20px;
+    font-family: Planewalker;
+  }
+  .start-btn:hover {
+      box-shadow: 0 4px #f38e09;
+      top: 30px;
+  }
+  .start-btn:active {
+      box-shadow: 0 0 #f38e09;
+      top: 30px;
+  }
+  /* reset */
+  .reset-btn {
+    animation: glow 1s ease-in-out infinite alternate;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    background: #020100;
+    font-size: 30px;
+    font-weight: 300;
+      color: #f38e09;
+    text-transform: uppercase;
+      letter-spacing: 2px;
+    padding: 25px 80px;
+    margin: 0 auto;
+      box-shadow:  3px 6px #f38e09;
+    border-radius: 20px;
+  }
+  .reset-btn:hover {
+      box-shadow: 0 4px #f38e09;
+      top: 30px;
+  }
+  .reset-btn:active {
+      box-shadow: 0 0 #f38e09;
+      top: 30px;
+  }
+  
+  
+  
