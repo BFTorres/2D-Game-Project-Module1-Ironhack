@@ -1,9 +1,9 @@
 
 @font-face {
     font-family: PlanewalkerBold;
-    src: url(game-resources/fonts/PlanewalkerBold);
+    src: url(game-resources/fonts/Planewalker\ Bold\ Italic.otf);
     font-family: Planewalker;
-    src: url(game-resources/fonts/Planewalker);
+    src: url(game-resources/fonts/Planewalker.otf);
     /*font-family: ;
     src: url();*/
   }
@@ -44,32 +44,53 @@
           height: 100%;
           margin: 0; 
     background-image: url(game-resources/assets/back3.jpeg);
-    font-style: Planewalker;
+    font-family: Planewalker;
     /*animation: glow 1s ease-in-out infinite alternate;*/
   }
-  title {
-    animation: glow 1s ease-in-out infinite alternate;
+  .subtitle {
+    font-size: 12vmin;
+    margin-bottom: 1rem;
+  }
+  .title {
+    min-width: 40%;
+    text-align: center;
+    font-size: 4vmin;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    box-shadow: 0px 0px 25px 10px black;
+    padding: 1 1rem;
+    margin-top: auto;
+    /*animation: glow 1s ease-in-out infinite alternate;*/
   }
   h1{
     /*animation: glow 1s ease-in-out infinite alternate;*/
-    font-style: Planewalker, arial;
     color:white;
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     font-size: 90px;
     letter-spacing: 5px;
+    font-family: Planewalker;
   }
   /*splash*/
-  .instruccions {
+  .rights {
+    color: rgb(255, 255, 255);
+    text-align: left;
+    font-size: 9px;
+    margin-top: 200px;
+    font-style: Planewalker;
+  }
+  .memes {
     color: rgb(255, 255, 255);
     text-align: center;
     font-size: 30px;
+    margin-top: 200px;
+    font-style: Planewalker;
   }
   /*canvas*/
   #game {
     padding: 0;
     margin: auto;
-    margin-top: 100px;
+    margin-top: auto;
     display: block;
     background-image: url(game-resources/assets/Background\(1\).png);
   }
@@ -82,13 +103,16 @@
   .scoreText {
     font-size: 40px;
     letter-spacing: 10px;
+    text-shadow: 1px 2px #f38e09;
   }
   .scoreNum {
     font-size: 90px;
     color: #f4dbf4;
+    text-shadow: 1px 3px #f38e09;
   }
   .quote{
     font-size: 60px;
+    text-shadow: 1px 3px #f38e09;
   }
   /*BTNS*/
   /* start */
@@ -106,14 +130,14 @@
     text-transform: uppercase;
       letter-spacing: 2px;
     padding: 25px 80px; 
-    margin: 0 auto; 
-      box-shadow: 3px 6px #f38e09;
+    margin: 150px auto; 
+      box-shadow: 5px 9px #f38e09;
     border-radius: 20px;
     font-family: Planewalker;
   }
   .start-btn:hover {
-      box-shadow: 0 4px #f38e09;
-      top: 30px;
+      box-shadow: 0 1px #f38e09;
+      top: 5px;
   }
   .start-btn:active {
       box-shadow: 0 0 #f38e09;
@@ -135,12 +159,12 @@
       letter-spacing: 2px;
     padding: 25px 80px;
     margin: 0 auto;
-      box-shadow:  3px 6px #f38e09;
+      box-shadow:  5px 9px #f38e09;
     border-radius: 20px;
   }
   .reset-btn:hover {
-      box-shadow: 0 4px #f38e09;
-      top: 30px;
+      box-shadow: 0 1px #f38e09;
+      top: 5px;
   }
   .reset-btn:active {
       box-shadow: 0 0 #f38e09;

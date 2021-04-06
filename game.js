@@ -124,7 +124,6 @@ function createEnemies(){
   let type = randomRange(0, 1);
   let enemy = new Enemy(canvas.width + size, canvas.height - size, size, size, '#bf1313');
  
- 
   if (type == 1) {
         enemy.y -= player.originalHeight - 10;
       }
@@ -137,7 +136,6 @@ function randomRange(min, max) {
 //timer
 let initialSpawnTimer = 200;
 let spawnTimer = initialSpawnTimer;
-
 //splash
 function splash(){
   let body = document.querySelector("body")
@@ -147,7 +145,8 @@ function splash(){
   splashScreen.classList.add("splashScr")
   splashScreen.innerHTML = `
     <button class="start-btn">SKOOMA TIME</button> 
-    <h2 class= "instruccions">Game log:</h2>`
+    <h2 class= "memes">"Getting high in High-Rock and hammered in Hammerfell." - M'aiq the Liar</h2>
+    <h4 class= "rights">All rights reserved to: Bethesda Games Studio. Music by AllinAll, YoungScrolls.</h4>`
   body.appendChild(splashScreen)
   let splashBtn = splashScreen.querySelector(".start-btn")
   splashBtn.addEventListener("click", function() {
