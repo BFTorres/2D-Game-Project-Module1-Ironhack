@@ -9,18 +9,28 @@ document.addEventListener("keydown", function (even) {
 document.addEventListener("keyup", function (even){
   keys[even.code] = false;
 })
-//img
+//img player and enemies 
 let playerImg = new Image();
 playerImg.src = "game-resources/assets/GUAR 3.png";
-let enemyImg = new Image();
-enemyImg.src = "game-resources/assets/racer-removebg-preview.png"
+
+let racerImg = new Image();
+racerImg.src = "game-resources/assets/racer-removebg-preview.png"
+
+let mudcrabImg = new Image ()
+mudcrabImg.src = 'game-resources/assets/daedra .png'
+
 //audio
-let splashScreenMusic = new Audio();
-splashScreenMusic.src = "game-resources/audio/The Elder Scrolls 高齢者のスクロール.mp3"
-let gameMusic = new Audio();
-gameMusic.src = "game-resources/audio/Argonians Are Property (Dunmer Trap).mp3"
-let endGame = new Audio();
-endGame.src = "game-resources/audio/Oblivion-guard-MEME.mp3"
+
+
+let splashScreenMusic = new Audio("./game-resources/audio/The Elder Scrolls 高齢者のスクロール.mp3");
+splashScreenMusic.loop = true;
+
+let gameMusic = new Audio("./game-resources/audio/Argonians Are Property (Dunmer Trap).mp3");
+gameMusic.loop = true;
+
+let endGame = new Audio("./game-resources/audio/Oblivion-guard-MEME.mp3");
+
+
 
 
 
@@ -35,11 +45,15 @@ let grav;
 let enemies = [];
 let gameSpeed;
 let keys = {};
-let isGameOver = false;
+let isWasted = false;
 let gameOverScreen;
+let winGScreen; // inwork
 let splashScreen;
 let canvasContainer;
+
 //>>classes<<//
+
+
 class Player {
   constructor (x, y, width, height, colour) {
     this.x = x;
@@ -86,7 +100,7 @@ class Player {
       this.dirY = -this.jumpForce;
     } else if (this.jumpTimer > 0 && this.jumpTimer < 15) {       
         this.jumpTimer++;
-        this.dirY = -this.jumpForce - (this.jumpTimer /50);
+        this.dirY = -this.jumpForce - (this.jumpTimer / 50);
       }
     }
    draw(){ 
@@ -115,8 +129,19 @@ class Enemy {
   }
   //npc crt
   draw() {
-    ctx.drawImage(enemyImg, this.x, this.y, this.width, this.height)
+    ctx.drawImage(racerImg, this.x, this.y, this.width, this.height)
   }
+////////////////////
+  /*let villianImages = [mudcrabImg, racerImg]
+  let lanes = [350, 430]
+  let villians = [
+    {
+        img: villianImages[Math.floor(Math.random() * villianImages.length)],
+        x: canvas.width,
+        y: lanes[Math.floor(Math.random() * lanes.length-20)]
+    }
+]*/
+//////////////////////
 }
 //score
 class Statistics {
@@ -140,28 +165,24 @@ class Statistics {
 //>>functions<<//
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-function PlaySound(splashScreenMusic) {
-    alert("Skooma Party");
-    return new Audio(path + splashScreenMusic + ".mp3");
-    snd.play();
-}
 
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function createEnemies(){ 
-  let size = randomRange(70, 240); 
+  let size = randomRange(60, 170);// player = new Player(180, canvas.height, 160, 220, "#ff7575");
   let type = randomRange(0, 1);
   let enemy = new Enemy(canvas.width + size, canvas.height - size, size, size, '#bf1313');
  
   if (type == 1) {
-        enemy.y -= player.originalHeight - 70;
+        enemy.y -= player.originalHeight - 15;
       }
       enemies.push(enemy);
+
 //diff size npc
 function randomRange(min, max) { 
   return Math.round(Math.random() * (max - min) + min);
     }
-}
+ }
 //timer
 let initialSpawnTimer = 150;
 let spawnTimer = initialSpawnTimer;
@@ -174,6 +195,7 @@ function splash(){
   splashScreen.classList.add("splashScr")
   splashScreen.innerHTML = `
     <button class="start-btn">GO</button> 
+    <h2 class= "memes"></h2>
     <h2 class= "memes">"Getting high in High-Rock and hammered in Hammerfell." - M'aiq the Liar</h2>
     <h4 class= "rights">All rights reserved to: Bethesda Games Studio. Music by AllinAll, YoungScrolls.</h4>`
   body.appendChild(splashScreen)
@@ -194,7 +216,7 @@ function addCanvas() {
 }
 //start
 function startGame(){
-  isGameOver = false
+    isWasted = false
   splashScreen.remove()
   addCanvas()
   canvas = document.getElementById("game");
@@ -204,41 +226,70 @@ function startGame(){
   canvas.height = window.innerHeight;
   //basics
   ctx.font = "20px"; 
-  gameSpeed = 2; 
+  gameSpeed = 3; 
   grav = 1; 
   score = 0; 
-  highscore = 0; 
+  highscore = 1000; //0
   // N'WAH Stats
-  player = new Player(180, 250, 160, 220, "#4a823e");
+  player = new Player(180, canvas.height, 160, 220, "#ff7575");
   // Score Stats
-  scoreText = new Statistics("Skooma bottles: " + score, 600, 30, "left", "#bababa", "30")
-  highscoreText = new Statistics("Moonsugar: " + highscore, canvas.width - 25, 25, "right", "#bababa", "30");
+  scoreText = new Statistics("Vivec's blessings: " + score, 600, 30, "left", "#ff7575", "30")
+  highscoreText = new Statistics("Moonsugar: " + highscore, canvas.width - 25, 25, "right", "#ff7575", "30");
   requestAnimationFrame(updateGame)     
 }
+/////////////////////inwork
 //Wasted Screen
-function gameOver(){
-  endGame.currentTime = 0
-  endGame.play();
-  endGame.volume = 0.30;
+function win(){
+  winG.currentTime = 0
+  winG.play();
+  winG.volume = 0.30;
   canvasContainer.remove();
   let body = document.querySelector("body") 
-  gameOverScreen = document.createElement("div")
-  gameOverScreen.classList.add("gameOverScr")
-  gameOverScreen.innerHTML = `
+  winGScreen = document.createElement("div")
+  winGScreen.classList.add("gameOverScr")
+  winGScreen.innerHTML = `
   <button class="reset-btn">RESET</button>
   <div class="score">
-  <h2 class = "scoreText">SKOOMA BOTTLES</h2>
-  <h3 class= "scoreNum">${score}</h3>
-  <h2 class= "quote"><em>"It just works." - Todd Howard</h3>`;
-body.appendChild(gameOverScreen) 
-let reset = gameOverScreen.querySelector(".reset-btn")
-  reset.addEventListener("click", function() {
-    gameMusic.play()
-    newGame();
+  <h2 class = "scoreText">Come to me, through fire and war. I welcome you, sweet N'Wah!</h2>
+ 
+  <h3 class= "scoreNum">${score}</h3> // Place meme instead of Score 
+
+  <h4 class= "rights">All rights reserved to: Bethesda Games Studio. Music by AllinAll, YoungScrolls.</h4>`;
+body.appendChild(winGScreen) 
+    let reset = winGScreen.querySelector(".reset-btn")
+    reset.addEventListener("click", function() {
+        gameMusic.play()
+        newGame();
   })  
 }
+
+//Win screen
+function gameOver(){
+    endGame.currentTime = 0
+    endGame.play();
+    endGame.volume = 0.30;
+    canvasContainer.remove();
+    let body = document.querySelector("body") 
+    gameOverScreen = document.createElement("div")
+    gameOverScreen.classList.add("gameOverScr")
+    gameOverScreen.innerHTML = `
+    <button class="reset-btn">RESET</button>
+    <div class="score">
+    <h2 class = "scoreText">Vivec's Blessings</h2>
+    <h3 class= "scoreNum">${score}</h3>
+    <h2 class= "quote"><em>"It just works." - Todd Howard</h3>
+    <h4 class= "rights">All rights reserved to: Bethesda Games Studio. Music by AllinAll, YoungScrolls.</h4>`;
+  body.appendChild(gameOverScreen) 
+  let reset = gameOverScreen.querySelector(".reset-btn")
+    reset.addEventListener("click", function() {
+      gameMusic.play()
+      newGame();
+    })  
+  }
+
 function newGame() { 
-  gameOverScreen.remove();  
+  gameOverScreen.remove(); 
+  winGScreen.remove(); 
   let body = document.querySelector("body")
     highscore = 0;
     highscoreText;
@@ -246,7 +297,7 @@ function newGame() {
     enemies = [];
     gameSpeed = 2;
     keys = {};
-    isGameOver = false;
+    isWasted= false;
     // loop acaba aqui 
     initialSpawnTimer = 200;
     spawnTimer = 100;
@@ -312,10 +363,10 @@ for (let i = 0; i < enemies.length; i ++) {
       enemies = []; 
       spawnTimer = initialSpawnTimer;
       gameSpeed = 2;
-      isGameOver = true
+      isWasted = true
       gameOver();     
   }
-  if (!isGameOver) e.update()
+  if (!isWasted) e.update()
   console.log("game continues")
 }
   player.animation();
@@ -325,9 +376,9 @@ for (let i = 0; i < enemies.length; i ++) {
   scoreText.draw();
   if (score > highscore) {
     highscore = score;
-    highscoreText.text = "Highscore: " + highscore;
+    highscoreText.text = "Highscore: " + highscore;   
   }
-  if (!isGameOver) requestAnimationFrame(updateGame)
+  if (!isWasted) requestAnimationFrame(updateGame)
 }
 window.addEventListener("load", splash)
 
