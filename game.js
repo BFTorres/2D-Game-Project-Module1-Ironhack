@@ -11,17 +11,14 @@ document.addEventListener("keyup", function (even){
 })
 //img player and enemies 
 let playerImg = new Image();
-playerImg.src = "game-resources/assets/GUAR 3.png";
+playerImg.src = "./game-resources/assets/GUAR 3.png";
 
 let racerImg = new Image();
-racerImg.src = "game-resources/assets/racer-removebg-preview.png"
+racerImg.src = "./game-resources/assets/racer-removebg-preview.png"
 
 let mudcrabImg = new Image ()
-mudcrabImg.src = 'game-resources/assets/daedra .png'
-
+mudcrabImg.src = './game-resources/assets/daedra .png'
 //audio
-
-
 let splashScreenMusic = new Audio("./game-resources/audio/The Elder Scrolls 高齢者のスクロール.mp3");
 splashScreenMusic.loop = true;
 
@@ -29,10 +26,6 @@ let gameMusic = new Audio("./game-resources/audio/Argonians Are Property (Dunmer
 gameMusic.loop = true;
 
 let endGame = new Audio("./game-resources/audio/Oblivion-guard-MEME.mp3");
-
-
-
-
 
 //variables
 let muted;

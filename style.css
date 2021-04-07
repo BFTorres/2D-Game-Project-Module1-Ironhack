@@ -42,7 +42,7 @@ body {
         width: 100%;
         height: 100%;
         margin: 0; 
-  background-image: url(game-resources/assets/back3.jpeg);
+  background-image: url(./game-resources/assets/back3.jpeg);
   font-family: Planewalker;
   /*animation: glow 1s ease-in-out infinite alternate;*/
 }
@@ -91,7 +91,7 @@ h1{
   margin: auto;
   margin-top: auto;
   display: block;
-  background-image: url(game-resources/assets/Background\(1\).png);
+  background-image: url(./game-resources/assets/Background\(1\).png);
 }
 /*score*/
 .score {
