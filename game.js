@@ -31,7 +31,7 @@ let scoreText;
 let highscore; 
 let highscoreText;
 let player;
-let gravity; 
+let grav; 
 let enemies = [];
 let gameSpeed;
 let keys = {};
@@ -71,7 +71,7 @@ class Player {
 
     //gravity
     if (this.y + this.height < canvas.height) {
-      this.dirY += gravity;
+      this.dirY += grav;
       this.grounded = false;
     } else {
       this.dirY = 0;
@@ -205,7 +205,7 @@ function startGame(){
   //basics
   ctx.font = "20px"; 
   gameSpeed = 2; 
-  gravity = 1; 
+  grav = 1; 
   score = 0; 
   highscore = 0; 
   // N'WAH Stats
@@ -242,7 +242,7 @@ function newGame() {
   let body = document.querySelector("body")
     highscore = 0;
     highscoreText;
-    gravity = 1;
+    grav = 1;
     enemies = [];
     gameSpeed = 2;
     keys = {};
