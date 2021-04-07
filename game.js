@@ -1,7 +1,6 @@
 
 let body = document.querySelector("body")
-let canvas;
-let ctx;
+let canvas; let ctx;
 //>>event listeners<<//
 document.addEventListener("keydown", function (even) {
   keys[even.code] = true;
@@ -14,25 +13,33 @@ let playerImg = new Image();
 playerImg.src = "./game-resources/assets/GUAR 3.png";
 
 let racerImg = new Image();
-racerImg.src = "./game-resources/assets/racer-removebg-preview.png"
+racerImg.src = "./game-resources/assets/daedra .png"
 
 let mudcrabImg = new Image ()
 mudcrabImg.src = './game-resources/assets/daedra .png'
+
+
+
 //audio
 let splashScreenMusic = new Audio("./game-resources/audio/The Elder Scrolls 高齢者のスクロール.mp3");
 splashScreenMusic.loop = true;
 
-let gameMusic = new Audio("./game-resources/audio/Argonians Are Property (Dunmer Trap).mp3");
+/*let gameMusic = new Audio("./game-resources/audio/Argonians Are Property (Dunmer Trap).mp3");
+gameMusic.loop = true;*/
+
+let gameMusic = new Audio("./game-resources/audio/Dagoth Ur - Dagothwave.mp3");
 gameMusic.loop = true;
 
 let endGame = new Audio("./game-resources/audio/Oblivion-guard-MEME.mp3");
 
+
 //variables
-let muted;
+let coins = [{x: 140, y: 0}]
+let muteAudio;
 let score; 
 let scoreText;
-let highscore; 
-let highscoreText;
+/*let highscore; 
+let highscoreText;*/
 let player;
 let grav; 
 let enemies = [];
@@ -44,7 +51,37 @@ let winGScreen; // inwork
 let splashScreen;
 let canvasContainer;
 
+
 //>>classes<<//
+/*
+class Coins {
+  
+  // -----------coin------------
+  for (let i = 0; i < coins.length; i++) {
+    ctx.drawImage(coinImg, coins[i].x, coins[i].y)
+    coins[i].y++
+    if(coins[i].y + coinImg.height > playerY &&
+      coins[i].x < playerX + playerImg.width &&
+      coins[i].x + coinImg.width > playerX) {
+        score += 50
+        coins.splice(i, 1)
+        let coinAudio = new Audio('')
+        coinAudio.play()
+    }
+    if(coins[i].y == 100) {
+      coins.push({
+        x: Math.floor(Math.random()* (canvas.width - coinImg.width)),
+        y: 0
+      })
+    }
+  }
+
+  let coinImg = document.createElement('img')
+  coinImg.src = './'
+
+
+}*/
+
 
 
 class Player {
@@ -54,7 +91,7 @@ class Player {
     this.width = width;
     this.height = height;
     this.dirY = 0; 
-    this.jumpForce = 12; 
+    this.jumpForce = 10; 
     this.grounded = false;
     this.jumpTimer = 0;
   }
@@ -71,7 +108,7 @@ class Player {
     if (keys["Space"]) { 
       this.jump();
     } else {
-        this.jumpTimer = 2;  // 0 
+        this.jumpTimer = 1;  // 0 
       }
    this.y += this.dirY;
 
@@ -162,12 +199,12 @@ class Statistics {
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function createEnemies(){ 
-  let size = randomRange(60, 170);// player = new Player(180, canvas.height, 160, 220, "#ff7575");
+  let size = randomRange(150, 300);// player = new Player(180, canvas.height, 160, 220, "#ff7575");
   let type = randomRange(0, 1);
   let enemy = new Enemy(canvas.width + size, canvas.height - size, size, size, '#bf1313');
  
   if (type == 1) {
-        enemy.y -= player.originalHeight - 15;
+        enemy.y -= player.originalHeight - 40;
       }
       enemies.push(enemy);
 
@@ -177,7 +214,7 @@ function randomRange(min, max) {
     }
  }
 //timer
-let initialSpawnTimer = 150;
+let initialSpawnTimer = 170;
 let spawnTimer = initialSpawnTimer;
 //splash
 function splash(){
@@ -219,7 +256,7 @@ function startGame(){
   canvas.height = window.innerHeight;
   //basics
   ctx.font = "20px"; 
-  gameSpeed = 3; 
+  gameSpeed = 5; 
   grav = 1; 
   score = 0; 
   highscore = 1000; //0
@@ -232,7 +269,7 @@ function startGame(){
 }
 /////////////////////inwork
 //Wasted Screen
-function win(){
+/*function win(){
   winG.currentTime = 0
   winG.play();
   winG.volume = 0.30;
@@ -254,9 +291,9 @@ body.appendChild(winGScreen)
         gameMusic.play()
         newGame();
   })  
-}
+}*/
 
-//Win screen
+
 function gameOver(){
     endGame.currentTime = 0
     endGame.play();
@@ -288,39 +325,19 @@ function newGame() {
     highscoreText;
     grav = 1;
     enemies = [];
-    gameSpeed = 2;
+    gameSpeed = 5;
     keys = {};
     isWasted= false;
     // loop acaba aqui 
-    initialSpawnTimer = 200;
-    spawnTimer = 100;
+    initialSpawnTimer = 250;
+    spawnTimer = 200;
   startGame();
   //////////////////////////////
-  mute();
-  let muteBtn = document.querySelector("#mute");
-  if (muted) {
-    game.music.pause();
-    muteBtn.innerHTML = `<img src ="./img/soundOff.png" alt="Sound Off"/>`;
-  } else {
-    game.music.play();
-    muteBtn.innerHTML = `<img src ="./img/soundOn.png" alt="Sound On"/>`;
-  };
+  
   ///////////////////////////////
 }
 
-const mute = () => {
-    let muteBtn = document.querySelector("#mute");
-    muteBtn.addEventListener("click", () => {
-      if (muted) {
-        game.music.play();
-        muteBtn.innerHTML = `<img src ="./img/soundOn.png" alt="Sound On"/>`;
-      } else {
-        game.music.pause();
-        muteBtn.innerHTML = `<img src ="./img/soundOff.png" alt="Sound Off"/>`;
-      }
-      muted = !muted;
-    });
-  };
+
 /////////////////////////////////////////////////
 
 
@@ -332,9 +349,9 @@ function updateGame() {
   if (spawnTimer <= 0) {
     createEnemies();
     spawnTimer = initialSpawnTimer - gameSpeed * 50; 
-    console.log(gameSpeed)
+    //console.log(gameSpeed)
     if (spawnTimer < 100) {
-      spawnTimer = 100;
+      spawnTimer = 150;
     }
   }
 //npc crt
@@ -354,7 +371,7 @@ for (let i = 0; i < enemies.length; i ++) {
       gameMusic.currentTime = 0  
       enemies = []; 
       spawnTimer = initialSpawnTimer;
-      gameSpeed = 2;
+      gameSpeed = 1;
       isWasted = true
       gameOver();     
   }
