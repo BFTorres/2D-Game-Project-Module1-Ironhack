@@ -352,12 +352,11 @@ for (let i = 0; i < enemies.length; i ++) {
     enemies.splice(i, 1);
   }
   //collision
-  if (
-    player.x < e.x + e.width && 
+  if ( player.x < e.x + e.width && 
     player.x + player.width > e.x &&
     player.y < e.y + e.height &&
-    player.y + player.height > e.y
-    ){
+    player.y + player.height > e.y )
+{
       gameMusic.pause()    
       gameMusic.currentTime = 0  
       enemies = []; 
