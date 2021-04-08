@@ -243,7 +243,6 @@ function gameOver(){
     gameOverScreen.innerHTML = `
     <button class="reset-btn">RESET</button>
     <h2 class= "quote"><em>"It just works." - Todd Howard</h2>
-    <img src="./game-resources/assets/giphy.gif" class="meme" alt="If you see this, my MEME failed..." />
     <div class="score">
     <h2 class = "scoreText">Vivec's Blessings</h2>
     <h3 class= "scoreNum">${score}</h3>
