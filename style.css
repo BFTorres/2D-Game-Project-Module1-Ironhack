@@ -6,34 +6,27 @@
   font-family: Daedric;
   src: url("./game-resources/fonts/AllisDaedric-VYWz.otf");
 }
-@keyframes float{
-  from{
-      margin-bottom: 2rem;
-  }
-  to{
-      margin-bottom: 1rem;
-  }
-}
+
 @keyframes glow {
   from {
     text-shadow:
-      0 0 10px #fff,
-      0 0 20px #fff,
-      0 0 30px #808080,
-      0 0 40px #808080,
+      0 0 30px #fff,
+      0 0 40px #fff,
       0 0 50px #808080,
-      0 0 60px #000,
-      0 0 70px #000;
+      0 0 60px #808080,
+      0 0 70px #808080,
+      0 0 80px #000,
+      0 0 90px #000;
   }
   to {
       text-shadow:
         0 0 20px #000,
-        0 0 30px #000,
-        0 0 40px #fff,
-        0 0 50px #fff,
-        0 0 60px #fff,
+        0 0 50px #000,
         0 0 70px #fff,
-        0 0 80px #fff;
+        0 0 80px #fff,
+        0 0 100px #fff,
+        0 0 140px rgb(225, 255, 0),
+        0 0 250px rgb(255, 255, 255);
     }
   }   
 /*g h*/
@@ -44,6 +37,9 @@ body {
         margin: 0; 
   background-image: url(./game-resources/assets/back3.jpeg);
   font-family: Planewalker;
+  /*border-style: groove;
+  border-color: rgb(73, 62, 58);
+  border-width: 15px;*/
   /*animation: glow 1s ease-in-out infinite alternate;*/
 }
 .subtitle {
@@ -170,6 +166,6 @@ h1{
     top: 30px;
 }
 
-/* fancy */
+
 
 
