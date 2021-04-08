@@ -3,6 +3,7 @@ let body = document.querySelector("body")
 let canvas; 
 let ctx;
 
+
 //>>event listeners<<//
 document.addEventListener("keydown", function (even) {
   keys[even.code] = true;
@@ -47,9 +48,8 @@ let grav;
 let enemies = [];
 let gameSpeed;
 let keys = {};
-let isWasted = false;
+let isGameOver = false;
 let gameOverScreen;
-//let winGScreen;            // inwork
 let splashScreen;
 let canvasContainer;
 
@@ -93,28 +93,18 @@ class Player {
     this.width = width;
     this.height = height;
     this.dirY = 0; 
-    this.jumpForce = 10; 
+    this.jumpForce = 18; 
     this.grounded = false;
     this.jumpTimer = 0;
   }
-
-  /*jump() {
-    if (this.y < 150) {
-    } else {
-      this.speed = -5;
-    }
-  }*/
-
   animation() {
     //pular
     if (keys["Space"]) { 
       this.jump();
     } else {
-        this.jumpTimer = 1;  // 0 
+        this.jumpTimer = 0;  // 0 
       }
    this.y += this.dirY;
-
-
     //gravity
     if (this.y + this.height < canvas.height) {
       this.dirY += grav;
@@ -139,11 +129,6 @@ class Player {
       ctx.drawImage(playerImg, this.x, this.y, this.width, this.height)
     } 
   }  
-
-  //////////////////////////////////////////////
- 
-/////////////////////////////////////////////////////////////////
-
 // npc
 class Enemy {
   constructor (x, y, width, height, colour) {
@@ -184,20 +169,15 @@ class Statistics {
   }
 }
 //>>functions<<//
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function createEnemies(){ 
-  let size = randomRange(70, 150);
+  let size = randomRange(170, 200);
   // player = new Player(180, canvas.height, 160, 220, "#ff7575");
   let type = randomRange(0, 1);
   let enemy = new Enemy(canvas.width + size, canvas.height - size, size, size, '#bf1313');
  
-  if (type == 1) {
-        enemy.y -= player.originalHeight - 10;
-      }
+        if (type == 1) {
+          enemy.y -= player.originalHeight - 10;
+       }
       enemies.push(enemy);
 
 //diff size npc
@@ -213,7 +193,7 @@ function splash(){
   let body = document.querySelector("body")
   splashScreen = document.createElement("div")
   splashScreenMusic.play();
-  splashScreenMusic.volume = 0.30
+  splashScreenMusic.volume = 0.20
   splashScreen.classList.add("splashScr")
   splashScreen.innerHTML = `
     <button class="start-btn">GO</button> 
@@ -226,7 +206,7 @@ function splash(){
       splashScreenMusic.pause();
       splashScreen.currentTime = 0
       gameMusic.play()
-      gameMusic.volume = 0.30
+      gameMusic.volume = 0.20
       startGame();
     })
 }
@@ -238,7 +218,7 @@ function addCanvas() {
 }
 //start
 function startGame(){
-    isWasted = false
+  isGameOver = false
   splashScreen.remove()
   addCanvas()
   canvas = document.getElementById("game");
@@ -253,53 +233,28 @@ function startGame(){
   score = 0; 
   highscore = 0; //0
   // N'WAH Stats
-  player = new Player(180, canvas.height, 160, 220, "#ff7575");
+  player = new Player(180, canvas.height, 160, 220, "#4a823e");
   // Score Stats
   scoreText = new Statistics("Vivec's blessings: " + score, 600, 30, "left", "#ff7575", "30")
   highscoreText = new Statistics("Moonsugar: " + highscore, canvas.width - 25, 25, "right", "#ff7575", "30");
   requestAnimationFrame(updateGame)     
 }
-/////////////////////inwork
-//Wasted Screen
-/*function win(){
-  winG.currentTime = 0
-  winG.play();
-  winG.volume = 0.30;
-  canvasContainer.remove();
-  let body = document.querySelector("body") 
-  winGScreen = document.createElement("div")
-  winGScreen.classList.add("gameOverScr")
-  winGScreen.innerHTML = `
-  <button class="reset-btn">RESET</button>
-  <div class="score">
-  <h2 class = "scoreText">Come to me, through fire and war. I welcome you, sweet N'Wah!</h2>
- 
-  <h3 class= "scoreNum">${score}</h3> // Place meme instead of Score 
-
-  <h4 class= "rights">All rights reserved to: Bethesda Games Studio. Music by AllinAll, YoungScrolls.</h4>`;
-body.appendChild(winGScreen) 
-    let reset = winGScreen.querySelector(".reset-btn")
-    reset.addEventListener("click", function() {
-        gameMusic.play()
-        newGame();
-  })  
-}*/
-
-
+//Wasted
 function gameOver(){
     endGame.currentTime = 0
     endGame.play();
-    endGame.volume = 0.30;
+    endGame.volume = 0.20;
     canvasContainer.remove();
     let body = document.querySelector("body") 
     gameOverScreen = document.createElement("div")
     gameOverScreen.classList.add("gameOverScr")
     gameOverScreen.innerHTML = `
     <button class="reset-btn">RESET</button>
+    <h2 class= "quote"><em>"It just works." - Todd Howard</h2>
+    <img src="./game-resources/assets/giphy.gif" class="meme" alt="If you see this, my MEME failed..." />
     <div class="score">
     <h2 class = "scoreText">Vivec's Blessings</h2>
     <h3 class= "scoreNum">${score}</h3>
-    <h2 class= "quote"><em>"It just works." - Todd Howard</h3>
     <h4 class= "rights">All rights reserved to: Bethesda Games Studio. Music by AllinAll, YoungScrolls.</h4>`;
   body.appendChild(gameOverScreen) 
   let reset = gameOverScreen.querySelector(".reset-btn")
@@ -308,10 +263,8 @@ function gameOver(){
       newGame();
     })  
   }
-
 function newGame() { 
   gameOverScreen.remove(); 
-  winGScreen.remove(); 
   let body = document.querySelector("body")
     highscore = 0;
     highscoreText;
@@ -319,9 +272,9 @@ function newGame() {
     enemies = [];
     gameSpeed = 2;
     keys = {};
-    isWasted= false;
+    isGameOver = false;
     // loop acaba aqui 
-    initialSpawnTimer = 200;
+    initialSpawnTimer = 100;
     spawnTimer = 100;
   startGame();
 }
@@ -362,10 +315,10 @@ for (let i = 0; i < enemies.length; i ++) {
       enemies = []; 
       spawnTimer = initialSpawnTimer;
       gameSpeed = 1;
-      isWasted = true
+      isGameOver = true
       gameOver();     
   }
-  if (!isWasted) e.update()
+  if (!isGameOver) e.update()
   console.log("game continues")
 }
   player.animation();
@@ -377,7 +330,7 @@ for (let i = 0; i < enemies.length; i ++) {
     highscore = score;
     highscoreText.text = "Highscore: " + highscore;   
   }
-  if (!isWasted) requestAnimationFrame(updateGame)
+  if (!isGameOver) requestAnimationFrame(updateGame)
 }
 window.addEventListener("load", splash)
 
