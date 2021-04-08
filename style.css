@@ -93,6 +93,14 @@ h1{
   display: block;
   background-image: url(./game-resources/assets/download\ \(5\).gif);
 }
+
+.destiny{
+  text-align: center;
+  color: #f4dbf4;
+  font-size: 40px;
+  text-shadow: 1px 3px #f38e09;
+  /*animation: glow 1s ease-in-out infinite alternate;*/
+}
 /*score*/
 .score {
   padding-top: 5%;

@@ -242,8 +242,8 @@ function gameOver(){
     gameOverScreen.classList.add("gameOverScr")
     gameOverScreen.innerHTML = `
     <button class="reset-btn">RESET</button>
-    <h2 class= "quote"><em>Congratulations, Outlander! You fulfilled your destiny and will become the next ES protagonist. Now stop lollygagging and go to jail! N'Wah!</h2>
-    <h2 class= "quote"><em>"It just works." - Todd Howard</h2>
+    <h2 class= "destiny"><em>Congratulations, Outlander! You fulfilled your destiny and will become the next ES protagonist. Now stop lollygagging and go to jail! N'Wah!</h2>
+    <h3 class= "quote"><em>"It just works." - Todd Howard</h3>
     <div class="score">
     <h2 class = "scoreText">Vivec's Blessings</h2>
     <h3 class= "scoreNum">${score}</h3>
