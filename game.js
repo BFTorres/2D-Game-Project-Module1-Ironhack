@@ -205,7 +205,7 @@ function splash(){
 function addCanvas() {
   canvasContainer = document.createElement("div")
   canvasContainer.setAttribute("id", "canvas-container")
-  canvasContainer.innerHTML = `<canvas id="game" width="1200" height="700"></canvas>`
+  canvasContainer.innerHTML = `<canvas id="game" width="1400" height="900"></canvas>`
   body.appendChild(canvasContainer)
 }
 //start
