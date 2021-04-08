@@ -11,12 +11,15 @@ document.addEventListener("keydown", function (even) {
 document.addEventListener("keyup", function (even){
   keys[even.code] = false;
 })
-//img player and enemies 
+//images
 let playerImg = new Image();
 playerImg.src = "./game-resources/assets/GUAR 3.png";
 
 let racerImg = new Image();
 racerImg.src = "./game-resources/assets/daedra .png"
+
+let memeImg = new Image();
+memeImg.src = "./game-resources/assets/lulu.png"
 
 /*let mudcrabImg = new Image ()
 mudcrabImg.src = './game-resources/assets/daedra .png'*/
@@ -46,6 +49,7 @@ let highscoreText;*/
 let player;
 let grav; 
 let enemies = [];
+//let memes = 
 let gameSpeed;
 let keys = {};
 let isGameOver = false;
@@ -55,38 +59,11 @@ let canvasContainer;
 
 
 //>>classes<<//
-/*
-class Coins {
-  
-  // -----------coin------------
-  for (let i = 0; i < coins.length; i++) {
-    ctx.drawImage(coinImg, coins[i].x, coins[i].y)
-    coins[i].y++
-    if(coins[i].y + coinImg.height > playerY &&
-      coins[i].x < playerX + playerImg.width &&
-      coins[i].x + coinImg.width > playerX) {
-        score += 50
-        coins.splice(i, 1)
-        let coinAudio = new Audio('')
-        coinAudio.play()
-    }
-    if(coins[i].y == 100) {
-      coins.push({
-        x: Math.floor(Math.random()* (canvas.width - coinImg.width)),
-        y: 0
-      })
-    }
-  }
-
-  let coinImg = document.createElement('img')
-  coinImg.src = './'
-
-
-}*/
 
 
 
-class Player {
+
+/*class Player {
   constructor (x, y, width, height, colour) {
     this.x = x;
     this.y = y;
@@ -128,9 +105,9 @@ class Player {
    draw(){ 
       ctx.drawImage(playerImg, this.x, this.y, this.width, this.height)
     } 
-  }  
+  }  */
 // npc
-class Enemy {
+/*class Enemy {
   constructor (x, y, width, height, colour) {
     this.x = x;
     this.y = y;
@@ -148,7 +125,7 @@ class Enemy {
   draw() {
     ctx.drawImage(racerImg, this.x, this.y, this.width, this.height)
   }
-}
+}*/
 //score
 class Statistics {
   constructor(text, x, y, alignment, colour, size) {
@@ -185,6 +162,21 @@ function randomRange(min, max) {
   return Math.round(Math.random() * (max - min) + min);
     }
  }
+
+ /*function createMemes(){ 
+  let size = randomRange(40, 140);
+  // player = new Player(180, canvas.height, 160, 220, "#ff7575");
+  
+  let Meme = new Meme(canvas.width + size, canvas.height - size, size, size, '#bf1313');
+ 
+      
+      memes.push(Meme);*/
+
+//diff size npc
+function randomRange(min, max) { 
+  return Math.round(Math.random() * (max - min) + min);
+    }
+ 
 //timer
 let initialSpawnTimer = 200;
 let spawnTimer = initialSpawnTimer;
