@@ -181,6 +181,7 @@ function splash(){
   splashScreen.innerHTML = `
     <button class="start-btn">GO</button> 
     <h2 class= "memes">"Getting high in High-Rock and hammered in Hammerfell." - M'aiq the Liar</h2>
+    <h3 class= "quote"><em>Press SPACE to jump</h3>
     <h4 class= "rights">All rights reserved to: Bethesda Games Studio. Music by AllinAll, YoungScrolls.</h4>`
   body.appendChild(splashScreen)
   let splashBtn = splashScreen.querySelector(".start-btn")
