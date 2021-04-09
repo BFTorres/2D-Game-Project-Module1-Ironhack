@@ -1,9 +1,6 @@
-
 let body = document.querySelector("body")
 let canvas; 
 let ctx;
-
-
 //>>event listeners<<//
 document.addEventListener("keydown", function (even) {
   keys[even.code] = true;
@@ -14,31 +11,20 @@ document.addEventListener("keyup", function (even){
 //images
 let playerImg = new Image();
 playerImg.src = "./game-resources/assets/GUAR 3.png";
-
 let racerImg = new Image();
 racerImg.src = "./game-resources/assets/daedra .png"
-
 let memeImg = new Image();
 memeImg.src = "./game-resources/assets/lulu.png"
-
 /*let mudcrabImg = new Image ()
 mudcrabImg.src = './game-resources/assets/daedra .png'*/
-
-
-
 //audio
 let splashScreenMusic = new Audio("./game-resources/audio/The Elder Scrolls 高齢者のスクロール.mp3");
 splashScreenMusic.loop = true;
-
 /*let gameMusic = new Audio("./game-resources/audio/Argonians Are Property (Dunmer Trap).mp3");
 gameMusic.loop = true;*/
-
 let gameMusic = new Audio("./game-resources/audio/Dagoth Ur - Dagothwave.mp3");
 gameMusic.loop = true;
-
 let endGame = new Audio("./game-resources/audio/Oblivion-guard-MEME.mp3");
-
-
 //variables
 //let septims = [{x: 140, y: 0}]
 //let muteAudio;
@@ -56,76 +42,6 @@ let isGameOver = false;
 let gameOverScreen;
 let splashScreen;
 let canvasContainer;
-
-
-
-
-
-
-
-/*class Player {
-  constructor (x, y, width, height, colour) {
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
-    this.dirY = 0; 
-    this.jumpForce = 18; 
-    this.grounded = false;
-    this.jumpTimer = 0;
-  }
-  animation() {
-    //pular
-    if (keys["Space"]) { 
-      this.jump();
-    } else {
-        this.jumpTimer = 0;  // 0 
-      }
-   this.y += this.dirY;
-    //gravity
-    if (this.y + this.height < canvas.height) {
-      this.dirY += grav;
-      this.grounded = false;
-    } else {
-      this.dirY = 0;
-      this.grounded = true;
-      this.y = canvas.height - this.height;
-    }  
-    this.draw()
-  }
-  jump() {
-    if (this.grounded && this.jumpTimer === 0) {
-      this.jumpTimer = 1;
-      this.dirY = -this.jumpForce;
-    } else if (this.jumpTimer > 0 && this.jumpTimer < 15) {       
-        this.jumpTimer++;
-        this.dirY = -this.jumpForce - (this.jumpTimer /50);
-      }
-    }
-   draw(){ 
-      ctx.drawImage(playerImg, this.x, this.y, this.width, this.height)
-    } 
-  }  */
-// npc
-/*class Enemy {
-  constructor (x, y, width, height, colour) {
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
-    this.colour = colour;
-    this.dirX = -gameSpeed;
-  }
-  update() {
-    this.x += this.dirX;
-    this.draw();
-    this.dirX = -gameSpeed;
-  }
-  //npc crt
-  draw() {
-    ctx.drawImage(racerImg, this.x, this.y, this.width, this.height)
-  }
-}*/
 //score
 class Statistics {
   constructor(text, x, y, alignment, colour, size) {
@@ -156,18 +72,15 @@ function createEnemies(){
           enemy.y -= player.originalHeight - 10;
        }
       enemies.push(enemy);
-
 //diff size npc
 function randomRange(min, max) { 
   return Math.round(Math.random() * (max - min) + min);
     }
  }
-
 //diff size npc
 function randomRange(min, max) { 
   return Math.round(Math.random() * (max - min) + min);
     }
- 
 //timer
 let initialSpawnTimer = 200;
 let spawnTimer = initialSpawnTimer;
@@ -176,7 +89,7 @@ function splash(){
   let body = document.querySelector("body")
   splashScreen = document.createElement("div")
   splashScreenMusic.play();
-  splashScreenMusic.volume = 0.20
+  splashScreenMusic.volume = 0.05
   splashScreen.classList.add("splashScr")
   splashScreen.innerHTML = `
     <button class="start-btn">GO</button> 
@@ -189,7 +102,7 @@ function splash(){
       splashScreenMusic.pause();
       splashScreen.currentTime = 0
       gameMusic.play()
-      gameMusic.volume = 0.20;
+      gameMusic.volume = 0.05;
       startGame();
     })
 }
@@ -226,7 +139,7 @@ function startGame(){
 function gameOver(){
     endGame.currentTime = 0
     endGame.play();
-    endGame.volume = 0.20;
+    endGame.volume = 0.05;
     canvasContainer.remove();
     let body = document.querySelector("body") 
     gameOverScreen = document.createElement("div")
@@ -261,20 +174,12 @@ function newGame() {
     spawnTimer = 100;
   startGame();
 }
-
-
-/////////////////////////////////////////////////
-
-
-// tira o canvas
 function updateGame() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
-  // le spawning 
   spawnTimer--;
   if (spawnTimer <= 0) {
     createEnemies();
     spawnTimer = initialSpawnTimer - gameSpeed * 40; 
-    //console.log(gameSpeed)
     if (spawnTimer < 100) {
       spawnTimer = 100;
     }
@@ -282,7 +187,6 @@ function updateGame() {
 //npc crt
 for (let i = 0; i < enemies.length; i ++) { 
   let e = enemies[i];
-
   //collision mech
   if (e.x + e.width < 0) {
     enemies.splice(i, 1);
