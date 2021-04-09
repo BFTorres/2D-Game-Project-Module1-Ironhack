@@ -50,4 +50,6 @@ https://bftorres.github.io/2D-Game-Project-Module1-Ironhack-/
 
 Slides
 
+https://docs.google.com/presentation/d/1Nrzb8K5cJ8UdN3gEIVFaIO3D66mAW7RyBkfuTQ8GMjg/edit#slide=id.p
+
 Link Slides.com
