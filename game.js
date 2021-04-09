@@ -40,7 +40,7 @@ let endGame = new Audio("./game-resources/audio/Oblivion-guard-MEME.mp3");
 
 
 //variables
-//let coins = [{x: 140, y: 0}]
+//let septims = [{x: 140, y: 0}]
 //let muteAudio;
 let score; 
 let scoreText;
@@ -58,7 +58,7 @@ let splashScreen;
 let canvasContainer;
 
 
-//>>classes<<//
+
 
 
 
@@ -147,7 +147,7 @@ class Statistics {
 }
 //>>functions<<//
 function createEnemies(){ 
-  let size = randomRange(170, 200);
+  let size = randomRange(150, 150);
   // player = new Player(180, canvas.height, 160, 220, "#ff7575");
   let type = randomRange(0, 1);
   let enemy = new Enemy(canvas.width + size, canvas.height - size, size, size, '#bf1313');
@@ -162,15 +162,6 @@ function randomRange(min, max) {
   return Math.round(Math.random() * (max - min) + min);
     }
  }
-
- /*function createMemes(){ 
-  let size = randomRange(40, 140);
-  // player = new Player(180, canvas.height, 160, 220, "#ff7575");
-  
-  let Meme = new Meme(canvas.width + size, canvas.height - size, size, size, '#bf1313');
- 
-      
-      memes.push(Meme);*/
 
 //diff size npc
 function randomRange(min, max) { 
@@ -189,7 +180,6 @@ function splash(){
   splashScreen.classList.add("splashScr")
   splashScreen.innerHTML = `
     <button class="start-btn">GO</button> 
-    <h2 class= "memes"></h2>
     <h2 class= "memes">"Getting high in High-Rock and hammered in Hammerfell." - M'aiq the Liar</h2>
     <h4 class= "rights">All rights reserved to: Bethesda Games Studio. Music by AllinAll, YoungScrolls.</h4>`
   body.appendChild(splashScreen)
@@ -198,14 +188,14 @@ function splash(){
       splashScreenMusic.pause();
       splashScreen.currentTime = 0
       gameMusic.play()
-      gameMusic.volume = 0.20
+      gameMusic.volume = 0.20;
       startGame();
     })
 }
 function addCanvas() {
   canvasContainer = document.createElement("div")
   canvasContainer.setAttribute("id", "canvas-container")
-  canvasContainer.innerHTML = `<canvas id="game" width="1400" height="900"></canvas>`
+  canvasContainer.innerHTML = `<canvas id="game" width="1200" height="700"></canvas>`
   body.appendChild(canvasContainer)
 }
 //start
@@ -225,9 +215,9 @@ function startGame(){
   score = 0; 
   highscore = 0; //0
   // N'WAH Stats
-  player = new Player(180, canvas.height, 160, 220, "#4a823e");
+  player = new Player(110, canvas.height, 160, 200, "#4a823e");
   // Score Stats
-  scoreText = new Statistics("Vivec's blessings: " + score, 600, 30, "left", "#ff7575", "30")
+  scoreText = new Statistics("BUGS: " + score, 600, 30, "center", "#ff7575", "30")
   highscoreText = new Statistics("Moonsugar: " + highscore, canvas.width - 25, 25, "right", "#ff7575", "30");
   requestAnimationFrame(updateGame)     
 }
@@ -241,11 +231,11 @@ function gameOver(){
     gameOverScreen = document.createElement("div")
     gameOverScreen.classList.add("gameOverScr")
     gameOverScreen.innerHTML = `
-    <button class="reset-btn">RESET</button>
     <h2 class= "destiny"><em>Congratulations, Outlander! You fulfilled your destiny and will become the next ES protagonist. Now stop lollygagging and go to jail! N'Wah!</h2>
+    <button class="reset-btn">RESET</button>
     <h3 class= "quote"><em>"It just works." - Todd Howard</h3>
     <div class="score">
-    <h2 class = "scoreText">Vivec's Blessings</h2>
+    <h2 class = "scoreText">BUGS DETECTED</h2>
     <h3 class= "scoreNum">${score}</h3>
     <h4 class= "rights">All rights reserved to: Bethesda Games Studio. Music by AllinAll, YoungScrolls.</h4>`;
   body.appendChild(gameOverScreen) 
@@ -258,15 +248,16 @@ function gameOver(){
 function newGame() { 
   gameOverScreen.remove(); 
   let body = document.querySelector("body")
+    scoreText = new Statistics("BUGS: " + score, 600, 30, "center", "#ff7575", "30")
     highscore = 0;
     highscoreText;
     grav = 1;
     enemies = [];
-    gameSpeed = 2;
+    gameSpeed = 3;
     keys = {};
     isGameOver = false;
     // loop acaba aqui 
-    initialSpawnTimer = 100;
+    initialSpawnTimer = 200;
     spawnTimer = 100;
   startGame();
 }
@@ -282,7 +273,7 @@ function updateGame() {
   spawnTimer--;
   if (spawnTimer <= 0) {
     createEnemies();
-    spawnTimer = initialSpawnTimer - gameSpeed * 50; 
+    spawnTimer = initialSpawnTimer - gameSpeed * 40; 
     //console.log(gameSpeed)
     if (spawnTimer < 100) {
       spawnTimer = 100;
@@ -306,7 +297,7 @@ for (let i = 0; i < enemies.length; i ++) {
       gameMusic.currentTime = 0  
       enemies = []; 
       spawnTimer = initialSpawnTimer;
-      gameSpeed = 1;
+      gameSpeed = 3;
       isGameOver = true
       gameOver();     
   }
@@ -314,9 +305,9 @@ for (let i = 0; i < enemies.length; i ++) {
   console.log("game continues")
 }
   player.animation();
-  gameSpeed += 0.040; 
+  gameSpeed += 0.015; 
   score ++;
-  scoreText.text = "Score: " + score;
+  scoreText.text = "BUGS: " + score;
   scoreText.draw();
   if (score > highscore) {
     highscore = score;

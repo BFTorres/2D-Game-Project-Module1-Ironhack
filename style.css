@@ -36,6 +36,7 @@ body {
         margin: 0; 
   background-image: url(./game-resources/assets/back3.jpeg);
   font-family: Planewalker;
+  background-repeat: no-repeat;
   /*border-style: groove;
   border-color: rgb(73, 62, 58);
   border-width: 15px;*/
@@ -74,7 +75,7 @@ h1{
   font-style: Planewalker;
 }
 
-.meme{
+.meme {
   position: center;
 }
 
@@ -85,13 +86,24 @@ h1{
   margin-top: 200px;
   font-style: Planewalker;
 }
+
+.quote{
+  text-align: center;
+  color: #f4dbf4;
+  font-size: 60px;
+  text-shadow: 1px 3px #f38e09;
+}
+
 /*canvas*/
 #game {
   padding: 0;
   margin: auto;
-  margin-top: auto;
   display: block;
-  background-image: url(./game-resources/assets/download\ \(5\).gif);
+  height: 620px;
+  width: 1300;
+  background-image: url(./game-resources/assets/download\ \(3\).gif);
+  background-repeat: no-repeat;
+  border: inset rgb(254, 250, 2);
 }
 
 .destiny{
@@ -112,18 +124,14 @@ h1{
   letter-spacing: 10px;
   text-shadow: 1px 2px #f38e09;
   margin: 0;
+  text-align: center;
 }
 .scoreNum {
   font-size: 40px;
   color: #f4dbf4;
   text-shadow: 1px 3px #f38e09;
 }
-.quote{
-  text-align: center;
-  color: #f4dbf4;
-  font-size: 60px;
-  text-shadow: 1px 3px #f38e09;
-}
+
 /*BTNS*/
 /* start */
 .start-btn {
