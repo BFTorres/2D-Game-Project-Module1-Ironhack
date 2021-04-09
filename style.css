@@ -37,9 +37,6 @@ body {
   background-image: url(./game-resources/assets/back3.jpeg);
   font-family: Planewalker;
   background-repeat: no-repeat;
-  /*border-style: groove;
-  border-color: rgb(73, 62, 58);
-  border-width: 15px;*/
   /*animation: glow 1s ease-in-out infinite alternate;*/
 }
 .subtitle {
@@ -90,7 +87,7 @@ h1{
 .quote{
   text-align: center;
   color: #f4dbf4;
-  font-size: 60px;
+  font-size: 40px;
   text-shadow: 1px 3px #f38e09;
 }
 
@@ -99,17 +96,18 @@ h1{
   padding: 0;
   margin: auto;
   display: block;
-  height: 620px;
-  width: 1300;
-  background-image: url(./game-resources/assets/download\ \(3\).gif);
+  height: 650px;
+  width: 890px;
+  background-image: url(./game-resources/assets/download\ \(6\).gif);
   background-repeat: no-repeat;
   border: inset rgb(254, 250, 2);
 }
 
 .destiny{
+  margin-top: 100px;
   text-align: center;
   color: #f4dbf4;
-  font-size: 40px;
+  font-size: 30px;
   text-shadow: 1px 3px #f38e09;
   /*animation: glow 1s ease-in-out infinite alternate;*/
 }

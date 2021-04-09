@@ -195,7 +195,7 @@ function splash(){
 function addCanvas() {
   canvasContainer = document.createElement("div")
   canvasContainer.setAttribute("id", "canvas-container")
-  canvasContainer.innerHTML = `<canvas id="game" width="1200" height="700"></canvas>`
+  canvasContainer.innerHTML = `<canvas id="game" width="890" height="650"></canvas>`
   body.appendChild(canvasContainer)
 }
 //start
@@ -231,13 +231,12 @@ function gameOver(){
     gameOverScreen = document.createElement("div")
     gameOverScreen.classList.add("gameOverScr")
     gameOverScreen.innerHTML = `
-    <h2 class= "destiny"><em>Congratulations, Outlander! You fulfilled your destiny and will become the next ES protagonist. Now stop lollygagging and go to jail! N'Wah!</h2>
+    <h2 class= "destiny"><em>Congratulations, Outlander! You fulfilled your destiny as the next ES protagonist. Now stop lollygagging and go to jail! N'Wah!</h2>
     <button class="reset-btn">RESET</button>
     <h3 class= "quote"><em>"It just works." - Todd Howard</h3>
     <div class="score">
     <h2 class = "scoreText">BUGS DETECTED</h2>
-    <h3 class= "scoreNum">${score}</h3>
-    <h4 class= "rights">All rights reserved to: Bethesda Games Studio. Music by AllinAll, YoungScrolls.</h4>`;
+    <h3 class= "scoreNum">${score}</h3>`;
   body.appendChild(gameOverScreen) 
   let reset = gameOverScreen.querySelector(".reset-btn")
     reset.addEventListener("click", function() {
