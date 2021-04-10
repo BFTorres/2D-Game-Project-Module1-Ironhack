@@ -46,7 +46,7 @@ https://trello.com/b/CWXKU7xN/the-legend-of-nwah
 
 Link url
 
-https://bftorres.github.io/2D-Game-Project-Module1-Ironhack-/
+https://bftorres.github.io/2D-Game-Project-Module1-Ironhack/
 
 Slides
 
