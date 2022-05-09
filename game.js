@@ -15,8 +15,6 @@ let racerImg = new Image();
 racerImg.src = "./game-resources/assets/daedra .png"
 let memeImg = new Image();
 memeImg.src = "./game-resources/assets/lulu.png"
-/*let mudcrabImg = new Image ()
-mudcrabImg.src = './game-resources/assets/daedra .png'*/
 //audio
 let splashScreenMusic = new Audio("./game-resources/audio/The Elder Scrolls 高齢者のスクロール.mp3");
 splashScreenMusic.loop = true;
@@ -89,7 +87,7 @@ function splash(){
   let body = document.querySelector("body")
   splashScreen = document.createElement("div")
   splashScreenMusic.play();
-  splashScreenMusic.volume = 0.05
+  splashScreenMusic.volume = 0.02 // 0.5
   splashScreen.classList.add("splashScr")
   splashScreen.innerHTML = `
     <button class="start-btn">GO</button> 
@@ -100,9 +98,9 @@ function splash(){
   let splashBtn = splashScreen.querySelector(".start-btn")
   splashBtn.addEventListener("click", function() {
       splashScreenMusic.pause();
-      splashScreen.currentTime = 0
+      splashScreen.currentTime = 0 
       gameMusic.play()
-      gameMusic.volume = 0.05;
+      gameMusic.volume = 0.02; // 0.5
       startGame();
     })
 }
@@ -145,7 +143,7 @@ function gameOver(){
     gameOverScreen = document.createElement("div")
     gameOverScreen.classList.add("gameOverScr")
     gameOverScreen.innerHTML = `
-    <h2 class= "destiny"><em>Congratulations, Outlander! You fulfilled your destiny as the next ES protagonist. Now stop lollygagging and go to jail! N'Wah!</h2>
+    <h2 class= "destiny"><em>"Git gud!"</h2>
     <button class="reset-btn">RESET</button>
     <h3 class= "quote"><em>"It just works." - Todd Howard</h3>
     <div class="score">
