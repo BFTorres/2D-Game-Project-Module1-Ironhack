@@ -92,7 +92,7 @@ function splash(){
   splashScreen.innerHTML = `
     <button class="start-btn">GO</button> 
     <h2 class= "memes">"Getting high in High-Rock and hammered in Hammerfell." - M'aiq the Liar</h2>
-    <h3 class= "quote"><em>Press SPACE to jump</h3>
+    <h3 class= "quote">Press SPACE to jump</h3>
     <h4 class= "rights">All rights reserved to: Bethesda Games Studio. Music by AllinAll, YoungScrolls.</h4>`
   body.appendChild(splashScreen)
   let splashBtn = splashScreen.querySelector(".start-btn")
@@ -129,7 +129,7 @@ function startGame(){
   // N'WAH Stats
   player = new Player(110, canvas.height, 160, 200, "#4a823e");
   // Score Stats
-  scoreText = new Statistics("BUGS: " + score, 600, 30, "center", "#ff7575", "30")
+  scoreText = new Statistics("BUGS: " + score, 600, 30, ".center", "#ffffff", "30")
   highscoreText = new Statistics("Moonsugar: " + highscore, canvas.width - 25, 25, "right", "#ff7575", "30");
   requestAnimationFrame(updateGame)     
 }
@@ -143,9 +143,9 @@ function gameOver(){
     gameOverScreen = document.createElement("div")
     gameOverScreen.classList.add("gameOverScr")
     gameOverScreen.innerHTML = `
-    <h2 class= "destiny"><em>"Git gud!"</h2>
+    <h2 class= "destiny">"Git gud!"</h2>
     <button class="reset-btn">RESET</button>
-    <h3 class= "quote"><em>"It just works." - Todd Howard</h3>
+    <h3 class= "quote">"It just works." - Todd Howard</h3>
     <div class="score">
     <h2 class = "scoreText">BUGS DETECTED</h2>
     <h3 class= "scoreNum">${score}</h3>`;

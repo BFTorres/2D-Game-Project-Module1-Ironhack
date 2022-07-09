@@ -85,9 +85,8 @@ h1{
 }
 .quote{
   text-align: center;
-  color: #f4dbf4;
+  color: #ffffff;
   font-size: 40px;
-  text-shadow: 1px 3px #f38e09;
 }
 /*canvas*/
 #game {
@@ -103,9 +102,8 @@ h1{
 .destiny{
   margin-top: 100px;
   text-align: center;
-  color: #f4dbf4;
+  color: #ffffff;
   font-size: 30px;
-  text-shadow: 1px 3px #f38e09;
   /*animation: glow 1s ease-in-out infinite alternate;*/
 }
 /*bugs*/
@@ -117,14 +115,12 @@ h1{
 .scoreText {
   font-size: 20px;
   letter-spacing: 10px;
-  text-shadow: 1px 2px #f38e09;
   margin: 0;
   text-align: center;
 }
 .scoreNum {
   font-size: 40px;
-  color: #f4dbf4;
-  text-shadow: 1px 3px #f38e09;
+  color: #ffffff;
 }
 /*BTNS*/
 /* start */
